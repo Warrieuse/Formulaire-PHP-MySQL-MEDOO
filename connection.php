@@ -27,7 +27,7 @@ if(isset($_POST['validationConnect'])) // condition validation sur bouton
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['pseudo'] = $user['name'];
                 $_SESSION['mail'] = $user['mail'];
-                header("Location: profil.php?id=".$_SESSION['id']);
+                header("Location: profil.php);
             }
             else
             {
@@ -76,8 +76,8 @@ else
             </tr>
             </table>
             <input type="submit" value="connection" name="validationConnect">
-
         </form>
+            <p><a href="resetpassword.php">Mot de passe oublié</a></p>
         <?php
 
         if(isset($error))

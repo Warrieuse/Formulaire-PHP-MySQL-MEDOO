@@ -24,22 +24,25 @@ function send_mail($to, $subject, $body)
 		'allow_self_signed' => true
 		)
 	);
-	$mail->SMTPDebug  = 0;  // mettez 2 pour avoir toutes les infos concernant l'envoi du mail sous la forme d'un echo                   
-	$mail->SMTPAuth   = true;                  
-	$mail->SMTPSecure = 'tls';                 
-	$mail->Host       = 'smtp.gmail.com';      
-	$mail->Port       = 587;                   
-	$mail->Username   = $username;  
-	$mail->Password   = $password;            
+	//server settings
+	$mail->SMTPDebug  = 2;  // mettez 2 pour avoir toutes les infos concernant l'envoi du mail sous la forme d'un echo
+	$mail->SMTPAuth   = true;// car on utilise l'authentification
+	$mail->SMTPSecure = 'tls';
+	$mail->Host       = 'smtp.gmail.com';// j'utilise une adresse gmail
+	$mail->Port       = 587;
+	$mail->Username   = $username;// mon mail qui va envoyer le mail enregistré au dessus
+	$mail->Password   = $password;// idem mais mdp
 
-	$mail->SetFrom($username, $username);
-	$mail->AddReplyTo($username,$username);
-	$mail->Subject    = $subject;
-	$mail->MsgHTML($body);
-	$address = $to;
-	$mail->AddAddress($address, $username);
-	
-	return $mail->Send();
+	//recipients & contents
+	$mail->SetFrom($username, $username); //mon envoi seras fais sont le nom de mon mail je peut le modifier si je
+	//souhaite envoyer plutot en cachat mon reel email
+	$mail->AddReplyTo($username,$username);// si user clic qur repondre alors il epondras à cette adresse mail
+	$mail->Subject    = $subject; // contenu du message qui seras affiché
+	$mail->MsgHTML($body);// ensuite que contient le message donc le body de ma page
+	$address = $to; // l'adresse du destinataire  devient une autre variable.
+	$mail->AddAddress($address, $username);// à qui je souhaite envoyer l'adresse mail et , son nom
+
+	return $mail->Send();// et donc j'envoi ce mail
 }
 
 ?>

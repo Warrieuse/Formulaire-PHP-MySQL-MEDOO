@@ -213,10 +213,10 @@ if(isset($_POST['validation']))
             </div>
 
             </div>
-            
+
         </form>
         <?php
-        
+
         if(isset($error))
         {
             echo $error;
